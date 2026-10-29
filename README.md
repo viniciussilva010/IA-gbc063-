@@ -75,5 +75,4 @@ python -m venv .venv
 
 - Pressione **`R`** com a janela aberta para gerar um novo mapa proceduralmente.
 - Pressione **`ESC`** para encerrar.
-- Abra o arquivo [`apresentacao_desafio1.html`](apresentacao_desafio1.html) no navegador para visualizar os **3 slides da apresentação** em tela cheia (use as setas `←` e `→` do teclado para navegar).
 
