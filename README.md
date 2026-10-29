@@ -1,8 +1,6 @@
 # Evacuação em Incêndio Florestal com Drones
 
-Projeto desenvolvido para a disciplina de **Inteligência Artificial** — ambiente visual Top-Down 2D em **Pygame** (`650 x 420` px, grade discreta `20 x 13` células de `32x32` px) inspirado na estética de *Stardew Valley*.
-
-![Preview do Ambiente]("https://github.com/viniciussilva010/IA-gbc063-/blob/main/Fuga-do-Fogo-_650x420_-2026-10-28-21-19-34.gif?raw=true")
+Projeto desenvolvido para a disciplina de **Inteligência Artificial** — ambiente visual Top-Down 2D em **Pygame** (`650 x 420` px, grade discreta `20 x 13` células de `32x32` px).
 
 ---
 
