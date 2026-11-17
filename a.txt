@@ -1,0 +1,13 @@
+O ambiente é um mundo aberto de 80 por 80 células — totalizando 6.400 posições possíveis. O drone batedor nasce no canto inferior esquerdo, na coordenada (2, 77), e sua missão é guiar os sobreviventes até a Zona Segura na coordenada (76, 1), superando 32 lagos, 75 rochas e 16 focos de incêndio com propagação dinâmica."
+"Para fazer o drone tomar decisões inteligentes, modelamos o problema com o algoritmo Deep Q-Network (DQN Puro):
+
+Representação do Estado (174 entradas): Em vez de usar uma imagem pesada de 6.400 pixels ou coordenadas cruas, dividimos a percepção do agente em 4 blocos eficientes:
+160 neurônios para Posição Desacoplada (80 para o eixo X e 80 para o eixo Y): Isso reduz os parâmetros da rede de mais de 400 mil para apenas 15 mil, permitindo generalização ortogonal.
+2 neurônios contínuos de GPS Normalizado: Guiam o agente como um plano inclinado em direção à meta.
+12 neurônios de Radares Locais (Norte, Sul, Leste, Oeste): Detectam caminho livre, obstáculo sólido ou fogo iminente.
+Arquitetura da Rede Neural: Uma rede MLP compacta de 174 neurônios de entrada -> 64 neurônios (ReLU) -> 64 neurônios (ReLU) -> 4 saídas lineares, estimando a recompensa esperada Q para mover-se em cada direção."*
+
+Por que o Treinamento foi em modo Headless? Um jogo a 60 FPS tem um 'freio de mão' de 16 milissegundos por quadro. Treinar 3.000 episódios desenhando na tela levaria quase uma hora. No modo headless, a renderização gráfica é desligada e a CPU processa uma matriz que representa o ambiente, concluindo o aprendizado em poucos instantes."
+
+grafico esquerda: O ponto verde brilhante no topo direito é a Zona Segura (+100). Em preto estão os lagos e pedras, e em vermelho com halo laranja estão os focos de incêndio. A linha ciano no canto inferior é o caminho que a rede sugere. de inicio o drone explora aleatoriamente e a linha ciano fica confinada ao início. Conforme o treino evolui, o valor de +100 se propaga via Equação de Bellman pelo mapa todo, e a linha ciano traça a rota completa contornando as chamas.
+grafico direita: Compara a taxa de sucesso da exploração com o teste guloso da linha do drone ao longo dos 3.000 episódios. Conforme "ϵ" decai de 0.99 para o valor mínimo, o agente para de agir ao acaso e a taxa de sucesso salta em direção a 100%
